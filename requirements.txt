@@ -1,0 +1,8 @@
+# Pipeline
+duckdb>=1.0.0
+dbt-duckdb>=1.7.0      # transform layer (dev target); use dbt-bigquery for prod
+pandas>=2.0.0
+# Experimentation layer
+numpy>=1.24.0
+scipy>=1.10.0
+statsmodels>=0.14.0

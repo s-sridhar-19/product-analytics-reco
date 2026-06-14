@@ -1,0 +1,35 @@
+version: 2
+models:
+  - name: int_order_lines
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: line_revenue
+        tests: [not_null]
+
+  - name: mart_rfm_segments
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]          # one row per customer
+      - name: r_score
+        tests:
+          - accepted_values: { values: [1, 2, 3, 4, 5] }
+      - name: f_score
+        tests:
+          - accepted_values: { values: [1, 2, 3, 4, 5] }
+      - name: segment
+        tests:
+          - accepted_values:
+              values: ['Champions','Loyal Customers','New / Promising',
+                       'At Risk (high value)','Cannot Lose Them',
+                       'Hibernating / Lost','Needs Attention']
+
+  - name: mart_recommendations
+    columns:
+      - name: product
+        tests: [not_null]
+
+  - name: mart_product_affinity
+    columns:
+      - name: lift
+        tests: [not_null]

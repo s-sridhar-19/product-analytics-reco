@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: raw
+    description: "Faithful copy of the source CSV, loaded by src/ingest.py."
+    schema: raw
+    tables:
+      - name: online_retail

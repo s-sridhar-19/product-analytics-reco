@@ -1,0 +1,18 @@
+# dev  = local DuckDB (runs today, zero auth)
+# prod = BigQuery (same models, just swap the target: `dbt build --target prod`)
+product_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/warehouse/retail.duckdb
+      schema: analytics
+      threads: 4
+    prod:
+      type: bigquery
+      method: service-account
+      project: "{{ env_var('GCP_PROJECT', 'your-gcp-project') }}"
+      dataset: analytics
+      keyfile: "{{ env_var('GCP_KEYFILE', '/path/to/keyfile.json') }}"
+      location: US
+      threads: 4
