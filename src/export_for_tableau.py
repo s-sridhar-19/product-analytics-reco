@@ -43,6 +43,11 @@ EXPORTS = {
     "top_affinity": "SELECT antecedent_desc, consequent_desc, pair_baskets, "
                     "support, confidence, lift FROM analytics.mart_product_affinity "
                     "ORDER BY lift DESC LIMIT 200",
+    "crosssell_opportunity": (
+        "SELECT recommend_desc, missed_baskets, avg_lift, gross_revenue_ceiling "
+        "FROM analytics.mart_crosssell_opportunity "
+        "ORDER BY gross_revenue_ceiling DESC LIMIT 15"
+    )
 }
 
 
